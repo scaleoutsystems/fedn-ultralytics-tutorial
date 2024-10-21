@@ -1,2 +1,2 @@
-fedn==0.14.0
+fedn==0.16.0
 ultralytics==8.2.91
