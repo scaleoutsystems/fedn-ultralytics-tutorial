@@ -1,5 +1,5 @@
 
-   **Note: If you are new to FEDn, we recommend that you start with the MNIST-Pytorch example instead: https://github.com/scaleoutsystems/fedn/tree/master/examples/mnist-pytorch**
+   **Note: If you are new to FEDn, we recommend that you start with the MNIST-Pytorch example instead: https://github.com/scaleoutsystems/fedn/examples/mnist-pytorch**
 
 # Welding Defect Object Detection Example
 
@@ -41,8 +41,8 @@ pip install fedn
 Clone this repository, then locate into this directory:
 
 ```
-git clone https://github.com/scaleoutsystems/fedn.git
-cd fedn/examples/welding-defect-detection
+git clone https://github.com/scaleoutsystems/fedn-ultralytics-tutorial.git
+cd fedn-ultralytics-tutorial/examples/welding-defect-detection
 ```
 
 

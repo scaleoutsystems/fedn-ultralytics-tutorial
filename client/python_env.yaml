@@ -6,4 +6,4 @@ build_dependencies:
 dependencies:
   - torch==2.4.1
   - ultralytics==8.2.91
-  - fedn==0.14.0
+  - fedn==0.16.0
