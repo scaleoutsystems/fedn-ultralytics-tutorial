@@ -5,13 +5,13 @@
 
 This is an example FEDn project that trains the Ultralytics YOLOv8n model to classify buffalos, elephants, rhinos and zebras. See a few examples below,
 
-<img src="figs/buffalo.png" width=30% height=30%>
+<img src="figs/buffalo.jpg" width=30% height=30%>
 
-<img src="figs/elephant.png" width=30% height=30%>
+<img src="figs/elephant.jpg" width=30% height=30%>
 
-<img src="figs/rhino.png" width=30% height=30%>
+<img src="figs/rhino.jpg" width=30% height=30%>
 
-<img src="figs/zebra.png" width=30% height=30%>
+<img src="figs/zebra.jpg" width=30% height=30%>
 
 
 
