@@ -119,7 +119,7 @@ This command will generate the seed model that will be used as the starting poin
 
 ## Step 8: Initializing the server-side
 The next step is to initialize the server side. This is done by uploading the compute package and the seed model to the FEDn studio platform.
-This is done by pressing the Sessions button and then the "New session" button. Here you can upload the compute package and the seed model.
+This is done by pressing the Sessions button and then the "New session" button. Here you can upload the compute package `package.tgz` and the seed model `seed.npz`.
 Once the compute package and seed model are uploaded, you can create the session by pressing the "Create session" button. Here you also configure the total number of rounds and aggregator function for the federated learning process.
 
 Before starting the training process, you need to connect the clients to the server which is done in the next step.
