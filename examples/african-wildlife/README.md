@@ -23,8 +23,8 @@ To run the example, follow the steps below. For a more detailed explanation, fol
 
 ### 1. Prerequisites
 
--  `Python >=3.8, <=3.12 <https://www.python.org/downloads>`__
--  `A project in FEDn Studio  <https://fedn.scaleoutsystems.com/signup>`__  
+-  `Python >=3.8, <=3.12` <https://www.python.org/downloads>
+-  `A project in FEDn Studio`  <https://fedn.scaleoutsystems.com/signup>
 
 
 ### 2. Install FEDn and clone GitHub repo
