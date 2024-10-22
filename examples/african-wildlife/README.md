@@ -54,7 +54,7 @@ mkdir datasets
 Then run the script partition_data.py to split the dataset into random partitions to distribute to the clients.
 
 ```bash
-python partition_data.py <number of partitions>
+python3 partition_data.py <number of partitions>
 ```
 
 Note: Each client needs to call their dataset partition the same, so rename the datasets after distributing them.
