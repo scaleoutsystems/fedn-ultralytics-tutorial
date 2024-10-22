@@ -1,5 +1,4 @@
-# ultralytics-implementation-in-fedn-tutorial
-A tutorial of how to implement ultralytics models in a federated setting using FEDn
+# FEDn Ultralytics Tutorial
 
 ## Introduction
 This tutorial will guide you through the process of implementing a federated learning setup using the [FEDn] framework in combination with [Ultralytics] YOLOv8 models. Federated learning allows multiple clients to collaboratively train a global model without sharing their local datasets, ensuring data privacy and security. This tutorial is designed for users familiar with machine learning and federated learning concepts and will provide step-by-step instructions on configuring and running a complete federated learning workflow.
