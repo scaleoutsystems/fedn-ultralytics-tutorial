@@ -136,7 +136,7 @@ This starts the client and connects it to the server. Repeat this process for ea
 ## Step 10: Training the global model
 Once the clients are running, you can start the global training by pressing the Start session button in FEDn studio. This will initiate the federated learning process, where the global model is trained by aggregating the updates from the clients. Now you will see things happening on both the server and client side. You can monitor the training progress on the FEDn studio platform where metrics such as recall, precision, and mAP scores are shown.
 
-<img src="figs/global_convergence.png" width=30% height=30%>
+<img src="figs/global_convergence.png" width=100% height=100%>
 
 
 One training is completed, you can download any model from a certain round in the session. The model can be used for inference on new data.
