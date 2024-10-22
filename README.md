@@ -19,8 +19,7 @@ By the end of this tutorial, you will have built a distributed training environm
 By following these steps, you will not only gain hands-on experience with the FEDn platform but also learn how to integrate object detection tasks with YOLOv8 in a federated learning environment.
 
 ## Prerequisites
-- [FEDn] <https://fedn.scaleoutsystems.com/>
-- [Ultralytics] <https://www.ultralytics.com/>
+-  `Python >=3.8, <=3.12` <https://www.python.org/downloads>
 
 ## Step 1: Starting the server in FEDn
 Firstly, create an account on the FEDn studio platform <https://fedn.scaleoutsystems.com/signup>.
