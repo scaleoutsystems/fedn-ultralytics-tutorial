@@ -84,6 +84,8 @@ Each line corresponds to one bounding box in the image.
 
 For further details on how to prepare your dataset, you can visit <https://docs.ultralytics.com/datasets/>.
 
+For getting started quickly with a sample dataset, you can navigate into the `examples` repository to download and partition a sample dataset.
+
 ## Step 5: Setting up configurations
 
 ### Number of classes
