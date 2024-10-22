@@ -1,6 +1,7 @@
 import os
 import shutil
 import random
+import sys
 
 def create_splits(data_dir, output_dir, num_splits):
     subdirs = ['train', 'valid','test']
@@ -56,9 +57,21 @@ def create_splits(data_dir, output_dir, num_splits):
         # print path of the split directories
         print(f"Split directories created in {output_dir} for {subdir}.")
 
+
 if __name__ == "__main__":
+    # Check if the number of arguments is correct
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <num_splits>")
+        sys.exit(1)
+    
+    # Parse the arguments
     data_directory = 'datasets/african-wildlife'  # The dataset path
     output_directory = 'datasets/african_wildlife_partitions'  # Directory to store the new splits
-    num_splits = 2  # Replace with the desired number of splits
+    try:
+        num_splits = int(sys.argv[1])  # The number of splits (convert to int)
+    except ValueError:
+        print("The number of splits must be an integer.")
+        sys.exit(1)
     
+    # Call the function with the user-supplied arguments
     create_splits(data_directory, output_directory, num_splits)
