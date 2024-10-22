@@ -51,6 +51,13 @@ mkdir datasets
 2. Download the dataset from https://github.com/ultralytics/assets/releases/download/v0.0.0/african-wildlife.zip
 3. Unzip and move the folder to the "datasets" directory you created in step 1 
 
+Then run the script partition_data.py to split the dataset into random partitions to distribute to the clients.
+
+```bash
+python partition_data.py <number of partitions>
+```
+
+Note: Each client needs to call their dataset partition the same, so rename the datasets after distributing them.
 
 ### 4. Creating the compute package and seed model
 
