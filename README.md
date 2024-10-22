@@ -139,7 +139,7 @@ Once the clients are running, you can start the global training by pressing the 
 <img src="figs/global_convergence.png" width=80% height=80%>
 
 
-One training is completed, you can download any model from a certain round in the session. The model can be used for inference on new data.
+Once training is completed, you can download any model from a certain round in the session. The model can be used for inference on new data.
 
 ## Conclusion
 In this tutorial, you have learned how to implement Ultralytics YOLOv8 models in a federated learning setting using the FEDn platform. By following the steps outlined in this tutorial, you have successfully set up a distributed training environment where clients independently train local models, and a global model is aggregated on the server. You have also learned how to configure the dataset, set up the model configurations, build the compute package, and start the federated learning process. By completing this tutorial, you have gained hands-on experience with federated learning and object detection tasks using Ultralytics models.
