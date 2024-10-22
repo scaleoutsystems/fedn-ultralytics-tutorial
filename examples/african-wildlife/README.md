@@ -49,7 +49,7 @@ cd fedn-ultralytics-tutorial/examples/african-wildlife
 mkdir datasets
 ```
 2. Download the dataset from https://github.com/ultralytics/assets/releases/download/v0.0.0/african-wildlife.zip
-3. Unzip and move the folder to the "datasets" directory you created in step 1 
+3. Unzip and move the folder to the "datasets" directory you just created
 
 Then run the script partition_data.py to split the dataset into random partitions to distribute to the clients.
 
