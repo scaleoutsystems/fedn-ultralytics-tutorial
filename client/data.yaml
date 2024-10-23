@@ -4,4 +4,4 @@ test: fed_dataset/test/images
 
 nc: 3 # DEFINE NUMBER OF CLASSES HERE
 
-names: ['Class 1', 'Class 2','Class 3'] # DEFINE CLASS NAMES HERE
+names: ['Class 1', 'Class 2', 'Class 3'] # DEFINE CLASS NAMES HERE

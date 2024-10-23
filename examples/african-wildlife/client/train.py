@@ -6,10 +6,10 @@ from fedn.utils.helpers.helpers import save_metadata
 import tempfile
 
 from model import load_parameters, save_parameters
-from data import get_train_size
+from data import load_data
 import yaml
 
-def train(in_model_path, out_model_path, data_yaml_path='data.yaml', epochs=10,batch_size=16):
+def train(in_model_path, out_model_path, data_yaml_path=None, epochs=10,batch_size=16):
     """Complete a model update using YOLOv8.
 
     Load model parameters from in_model_path (managed by the FEDn client),
@@ -43,28 +43,25 @@ def train(in_model_path, out_model_path, data_yaml_path='data.yaml', epochs=10,b
     else:
         print(f"Config file not found at {config_path}. Using default epochs ({epochs}) and batch size ({batch_size}).")
 
+    data, length = load_data(data_yaml_path, step="train")
     # Train the model and remove the unnecessary files
     with tempfile.TemporaryDirectory() as tmp_dir:
-        model.train(data='data.yaml', epochs=epochs,batch=batch_size,verbose=False,exist_ok=True, project=tmp_dir)
+        model.train(data=data, epochs=epochs,batch=batch_size,verbose=False,exist_ok=True, project=tmp_dir)
 
     # Save the updated model to the output path
     save_parameters(model, out_model_path)
 
     # Metadata needed for aggregation server side
     metadata = {
-        "num_examples": get_train_size(data_yaml_path),  # Get number of examples
+        "num_examples": length,  # Get number of examples
     }
 
     # Save JSON metadata file (mandatory for FEDn)
     save_metadata(metadata, out_model_path)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python train.py <in_model_path> <out_model_path> [data_yaml_path] [epochs]")
-        sys.exit(1)
 
     in_model_path = sys.argv[1]
     out_model_path = sys.argv[2]
-    epochs = int(sys.argv[3]) if len(sys.argv) > 3 else 10
 
-    train(in_model_path, out_model_path, epochs)
+    train(in_model_path, out_model_path)

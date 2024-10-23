@@ -9,13 +9,7 @@ HELPER_MODULE = "numpyhelper"
 helper = get_helper(HELPER_MODULE)
 
 def compile_model():
-    yaml_file = glob.glob("yolov8*.yaml")
-    
-    if not yaml_file:
-        raise FileNotFoundError("No YAML file matching 'yolov8*.yaml' found.")
-    
-    if yaml_file[0] == "yolov8_.yaml":
-        raise ValueError("Please configure which YOLOv8 model to use by renaming the YAML file.")
+    yaml_file = "yolov8_.yaml"
     
     if torch.cuda.is_available():
         device = 'cuda' 
@@ -23,7 +17,7 @@ def compile_model():
         device = 'mps'
     else:
         device = 'cpu'
-    return YOLO(yaml_file[0]).to(device)
+    return YOLO(yaml_file).to(device)
 
 
 def load_parameters(model_path):

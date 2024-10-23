@@ -6,8 +6,9 @@ import tempfile
 from fedn.utils.helpers.helpers import save_metrics
 
 from model import load_parameters
+from data import load_data
 
-def validate(in_model_path, out_json_path, data_yaml_path='data.yaml'):
+def validate(in_model_path, out_json_path, data_yaml_path=None):
     """Validate YOLO model.
 
     :param in_model_path: The path to the input model.
@@ -17,13 +18,16 @@ def validate(in_model_path, out_json_path, data_yaml_path='data.yaml'):
     :param data_yaml_path: The path to the data file (YOLO dataset YAML file).
     :type data_yaml_path: str
     """
+
+    test_data_yaml, test_data_length = load_data(None, step="test")
+    train_data_yaml, train_data_length = load_data(None, step="train")
     # Load YOLOv8 model
     model = load_parameters(in_model_path)
 
     # Evaluate the model on both train and test datasets using YOLO's val() method
     with tempfile.TemporaryDirectory() as tmp_dir:
-        train_results = model.val(data=data_yaml_path, split='train', verbose=False, exist_ok=True,project=tmp_dir)
-        test_results = model.val(data=data_yaml_path, split='val', verbose=False, exist_ok=True,project=tmp_dir)
+        train_results = model.val(data=train_data_yaml, verbose=False, exist_ok=True,project=tmp_dir)
+        test_results = model.val(data=test_data_yaml, verbose=False, exist_ok=True,project=tmp_dir)
 
     # Extract metrics from the results
     report = {
@@ -42,12 +46,8 @@ def validate(in_model_path, out_json_path, data_yaml_path='data.yaml'):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python validate.py <in_model_path> <out_json_path> [data_yaml_path]")
-        sys.exit(1)
 
     in_model_path = sys.argv[1]
     out_json_path = sys.argv[2]
-    data_yaml_path = sys.argv[3] if len(sys.argv) > 3 else 'data.yaml'
 
-    validate(in_model_path, out_json_path, data_yaml_path)
+    validate(in_model_path, out_json_path)
