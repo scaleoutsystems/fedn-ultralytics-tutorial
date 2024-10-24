@@ -11,12 +11,6 @@ helper = get_helper(HELPER_MODULE)
 def compile_model():
     yaml_file = glob.glob("yolov8*.yaml")
     
-    if not yaml_file:
-        raise FileNotFoundError("No YAML file matching 'yolov8*.yaml' found.")
-    
-    if yaml_file[0] == "yolov8_.yaml":
-        raise ValueError("Please configure which YOLOv8 model to use by renaming the YAML file.")
-    
     if torch.cuda.is_available():
         device = 'cuda' 
     elif torch.backends.mps.is_available():
