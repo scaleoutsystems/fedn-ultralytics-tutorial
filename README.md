@@ -45,11 +45,19 @@ pip3 install -r requirements.txt
 This is recommended to be done in a virtual environment to avoid conflicts with other packages.
 
 ## Step 4: Setting up the dataset
-Ultralytics stores all datasets in a specific directory. You can set the location of this directory by configuring the datasets_dir option with yolo settings. To do this, run the following command:
+Start setting up the dataset by creating a directory named 'datasets' inside the repository:
+```bash
+mkdir datasets
+```
+Then copy the path to the 'datasets' folder by running the following command:
+```bash
+echo "$(pwd)/datasets" | pbcopy
+```
+Ultralytics uses a specific directory to store datasets, which you can configure using the datasets_dir option in YOLO settings. To set this up to the 'datasets' directory you previously created, run the following command, replacing <path_to_dataset> with the path you just copied:
 ```bash
 yolo settings datasets_dir=<path_to_dataset>
 ```
-Replace <path_to_dataset> with the path to your datasets folder, which in this tutorial is named 'datasets'. Then your data needs to be placed within a folder called 'fed_dataset'. The structure should be as follows:
+After setting the dataset directory, you’ll need to organize your data into a folder named 'fed_dataset' inside the datasets directory. Your final folder structure should look like this:
 ```bash
 datasets/
   fed_dataset/
@@ -84,7 +92,7 @@ Each line corresponds to one bounding box in the image.
 
 For further details on how to prepare your dataset, you can visit <https://docs.ultralytics.com/datasets/>.
 
-For getting started quickly with a sample dataset, you can navigate into the `examples` repository to download and partition a sample dataset.
+For getting started quickly, you can navigate into the `examples` repository to download and partition a sample dataset.
 
 ## Step 5: Setting up configurations
 
