@@ -118,7 +118,7 @@ Once you’ve completed all the configurations, you can build the compute packag
 fedn package create -p client
 ```
 The compute package contains all the necessary files and configurations for the client environments.
-If you make any changes to the configurations later, you’ll need to rebuild and reupload the compute package to apply the updates.
+If you make any changes to the number of classes or specific YOLOv8 model later, you’ll need to rebuild and reupload the compute package to apply the updates. For changes in the `client_config.yaml`, you don't need to rebuild the compute package.
 
 ## Step 7: Initializing the seed model
 To initialize the seed model, run the following command:
