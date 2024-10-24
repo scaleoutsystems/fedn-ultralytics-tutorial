@@ -70,7 +70,7 @@ datasets/
         image1.txt
         image2.txt
         ...
-    val/
+    valid/
       images/
         image1.jpg
         image2.jpg
