@@ -29,11 +29,11 @@ This initializes the server which later will be used to run the federated learni
 ## Step 2: Cloning the repository
 Next, you need to clone the repository:
 ```bash
-git clone https://github.com/scaleoutsystems/ultralytics-implementation-in-fedn-tutorial
+git clone https://github.com/scaleoutsystems/fedn-ultralytics-tutorial
 ```
 Then navigate into the repository:
 ```bash
-cd ultralytics-implementation-in-fedn-tutorial
+cd fedn-ultralytics-tutorial
 ```
 This repository contains all the necessary files and configurations for the federated learning setup.
 
