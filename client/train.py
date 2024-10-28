@@ -9,7 +9,7 @@ from model import load_parameters, save_parameters
 from data import get_train_size
 import yaml
 
-def train(in_model_path, out_model_path, data_yaml_path='data.yaml', epochs=10,batch_size=16):
+def train(in_model_path, out_model_path, epochs=10, data_yaml_path='data.yaml', batch_size=16):
     """Complete a model update using YOLOv8.
 
     Load model parameters from in_model_path (managed by the FEDn client),
@@ -41,7 +41,7 @@ def train(in_model_path, out_model_path, data_yaml_path='data.yaml', epochs=10,b
         epochs = config.get('local_epochs', epochs)
         batch_size = config.get('batch_size', batch_size)
     else:
-        print(f"Config file not found at {config_path}. Using default epochs ({epochs}) and batch size ({batch_size}).")
+        print(f"Client config file not found at {config_path}. Using default epochs ({epochs}) and batch size ({batch_size}).")
 
     # Train the model and remove the unnecessary files
     with tempfile.TemporaryDirectory() as tmp_dir:
@@ -60,7 +60,7 @@ def train(in_model_path, out_model_path, data_yaml_path='data.yaml', epochs=10,b
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("Usage: python train.py <in_model_path> <out_model_path> [data_yaml_path] [epochs]")
+        print("Usage: python train.py <in_model_path> <out_model_path> [epochs]")
         sys.exit(1)
 
     in_model_path = sys.argv[1]
