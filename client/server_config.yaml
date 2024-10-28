@@ -5,6 +5,6 @@ model_size: nano  # Options: nano, small, medium, large, extra-large
 num_classes: 3    # Number of classes
 class_names: ['Class 1', 'Class 2', 'Class 3']  # A list of class names
 
-train: fed_dataset/train/images  # Configure paths (usually not needed)
+train: fed_dataset/train/images  # Configure paths (usually not needed to be configured)
 val: fed_dataset/valid/images
 test: fed_dataset/test/images
