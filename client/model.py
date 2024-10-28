@@ -3,7 +3,6 @@ from ultralytics import YOLO
 import torch
 import collections
 import tempfile
-import glob
 
 HELPER_MODULE = "numpyhelper"
 helper = get_helper(HELPER_MODULE)
