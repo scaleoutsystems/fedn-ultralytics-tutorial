@@ -1,0 +1,36 @@
+# Ultralytics YOLO 🚀, AGPL-3.0 license
+# YOLOv8 object detection model with P3-P5 outputs, fixed to YOLOv8m scale
+
+
+# YOLOv8m backbone
+backbone:
+  - [-1, 1, Conv, [48, 3, 2]]          # 0-P1/2
+  - [-1, 1, Conv, [96, 3, 2]]          # 1-P2/4 
+  - [-1, 4, C2f, [96, True]]
+  - [-1, 1, Conv, [192, 3, 2]]         # 3-P3/8
+  - [-1, 6, C2f, [192, True]]
+  - [-1, 1, Conv, [384, 3, 2]]         # 5-P4/16 
+  - [-1, 6, C2f, [384, True]]
+  - [-1, 1, Conv, [768, 3, 2]]         # 7-P5/32 
+  - [-1, 4, C2f, [768, True]]
+  - [-1, 1, SPPF, [768, 5]]
+
+# YOLOv8m head
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 6], 1, Concat, [1]]
+  - [-1, 4, C2f, [384]]
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 4], 1, Concat, [1]]
+  - [-1, 4, C2f, [192]]                # P3/8-small
+
+  - [-1, 1, Conv, [192, 3, 2]]
+  - [[-1, 11], 1, Concat, [1]]
+  - [-1, 4, C2f, [384]]                # P4/16-medium
+
+  - [-1, 1, Conv, [384, 3, 2]]
+  - [[-1, 9], 1, Concat, [1]]
+  - [-1, 4, C2f, [768]]                # P5/32-large
+
+  - [[14, 17, 20], 1, Detect, [nc]]
