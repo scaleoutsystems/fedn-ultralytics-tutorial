@@ -2,7 +2,7 @@ import yaml
 import os
 
 # Load server configuration
-with open('global_config.yaml', 'r') as config_file:
+with open('client/global_config.yaml', 'r') as config_file:
     server_config = yaml.safe_load(config_file)
 
 # Extract configuration values
