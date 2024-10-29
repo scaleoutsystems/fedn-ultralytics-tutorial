@@ -26,7 +26,7 @@ python3 partition_data.py african-wildlife <num_splits>
 ```
 Replace `<num_splits>` with the number of clients you want to partition the data for.
 
-This generates the dataset partitions in the 'datasets' directory. These partitions needs to be distributed to the respective clients and renamed to 'african-wildlife' instead of 'african-wildlife_split_X.
+This generates the dataset partitions in the 'datasets' directory. These partitions needs to be distributed to the respective clients and renamed to 'fed_dataset' instead of 'african-wildlife_split_X.
 
 ## Step 3: Setting up the global_config.yaml
 
@@ -40,9 +40,9 @@ model_size: nano  # Options: nano, small, medium, large, extra-large
 num_classes: 4    # Number of classes
 class_names: ['Buffalo', 'Elephant', 'Rhino','Zebra']  # A list of class names
 
-train: african-wildlife/train/images  # Configure paths (usually not needed to be configured)
-val: african-wildlife/valid/images
-test: african-wildlife/test/images
+train: fed_dataset/train/images  # Configure paths (usually not needed to be configured)
+val: fed_dataset/valid/images
+test: fed_dataset/test/images
 ```
 
 ## Step 4: Return to the root guide and follow the instructions from there
