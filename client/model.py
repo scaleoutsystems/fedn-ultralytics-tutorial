@@ -3,7 +3,6 @@ from ultralytics import YOLO
 import torch
 import collections
 import tempfile
-import subprocess
 
 HELPER_MODULE = "numpyhelper"
 helper = get_helper(HELPER_MODULE)
@@ -52,10 +51,5 @@ def init_seed(out_path):
     model = compile_model()
     save_parameters(model, out_path)
 
-def run_setup():
-    """Run setup.py before the main code execution."""
-    subprocess.run(["python3", "setup.py"], check=True)
-
 if __name__ == "__main__":
-    run_setup()
     init_seed('../seed.npz')
