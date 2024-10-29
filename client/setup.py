@@ -16,10 +16,10 @@ val_path = server_config.get("val", "fed_dataset/valid/images")
 test_path = server_config.get("test", "fed_dataset/test/images")
 
 # Paths for model files
-model_folder = "yolov8models"
+model_folder = "client/yolov8models"
 model_file = os.path.join(model_folder, f"{model_size}.yaml")
-output_model_file = "model.yaml"
-output_data_file = "data.yaml"
+output_model_file = "client/model.yaml"
+output_data_file = "client/data.yaml"
 
 # Generate model.yaml with 'nc' on line 4
 if not os.path.exists(model_file):
