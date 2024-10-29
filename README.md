@@ -96,18 +96,8 @@ For getting started quickly, you can navigate into the `examples` repository to 
 
 ## Step 5: Setting up configurations
 
-### Number of classes
-To set up your YOLOv8 model, you need to adjust the configuration files. Specifically, the number of classes (nc) must be set in both the `data.yaml` and the `yolov8_.yaml` files inside the 'clients' folder. Make sure to update these files with the appropriate number of classes for your specific dataset.
-
-### Size of the YOLOv8 model
-You also need to select which YOLOv8 model to use by renaming the `yolov8_.yaml` file according to the desired model variant:
-- For YOLOv8n (nano), rename the file to `yolov8n.yaml`
-- For YOLOv8s (small), rename the file to `yolov8s.yaml`
-- For YOLOv8m (medium), rename the file to `yolov8m.yaml`
-- For YOLOv8l (large), rename the file to `yolov8l.yaml`
-- For YOLOv8x (extra large), rename the file to `yolov8x.yaml`
-
-If no specific model is selected, the default model is YOLOv8n.
+### Global configurations
+To set up your YOLOv8 model, you need to configure the global_config.yaml inside the 'client' folder. Here you choose the number of classes for the YOLOv8 model by setting the `num_classes` parameter, and respective class names. You also choose which YOLOv8 model to use by setting the `model_size` parameter. 
 
 ### Local client configurations
 Each client can set different training configurations in the `client_config.yaml` file. This file contains the configurations for the client environments, such as the number of local epochs, and batch size. You can adjust these configurations to suit each client's hardware and training requirements.
@@ -115,10 +105,11 @@ Each client can set different training configurations in the `client_config.yaml
 ##  Step 6: Building the compute package
 Once you’ve completed all the configurations, you can build the compute package by running the following command:
 ```bash
+python3 client/setup.py
 fedn package create -p client
 ```
-The compute package contains all the necessary files and configurations for the client environments.
-If you make any changes to the number of classes or specific YOLOv8 model later, you’ll need to rebuild and reupload the compute package to apply the updates. For changes in the `client_config.yaml`, you don't need to rebuild the compute package.
+This creates he compute package `package.tgz` which contains all the necessary files and configurations for the client environments.
+If you make any changes to the global_config.yaml, you’ll need to rebuild (Step 6) and reupload (Step 8) the compute package to apply the updates. For changes in the `client_config.yaml`, you don't need to rebuild the compute package.
 
 ## Step 7: Initializing the seed model
 To initialize the seed model, run the following command:
