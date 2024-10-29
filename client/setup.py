@@ -30,15 +30,15 @@ else:
         model_lines = file.readlines()
 
     # Insert the nc line at line 4 (index 3)
-    model_lines.insert(3, f"nc: {num_classes}\n")
+    model_lines.insert(3, f"nc: {num_classes} # Number of classes from global_config\n")
 
     # Write the modified content to the model.yaml file
     with open(output_model_file, 'w') as output_file:
         output_file.writelines(model_lines)
 
-    print(f"'{output_model_file}' created successfully with 'nc: {num_classes}' at line 4 based on '{model_file}'")
+    print(f"'{output_model_file}' created successfully with nc: {num_classes} based on '{model_file}'")
 
-# Generate data.yaml with paths, nc, and names (as an indexed dictionary)
+# Generate data.yaml with paths, nc, and names
 data_content = {
     "train": train_path,
     "val": val_path,
@@ -51,4 +51,4 @@ data_content = {
 with open(output_data_file, 'w') as data_file:
     yaml.dump(data_content, data_file, sort_keys=False)
 
-print(f"'{output_data_file}' created successfully with paths from server_config.yaml, nc: {num_classes}, and indexed class names.")
+print(f"'{output_data_file}' created successfully with paths from global_config.yaml, nc: {num_classes}, and indexed class names.")
