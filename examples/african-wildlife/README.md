@@ -11,7 +11,7 @@ This is an example with data from Ultralytics where we classify buffalos, elepha
 <img src="figs/zebra.jpg" width=30% height=30%>
 
 
-## Step 1:. Downloading the data
+## Step 1: Downloading the data
 
 Download the dataset from the following link and extract it to the `datasets` directory:
 <https://github.com/ultralytics/assets/releases/download/v0.0.0/african-wildlife.zip>
