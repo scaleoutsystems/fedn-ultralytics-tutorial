@@ -1,6 +1,6 @@
 # African Wildlife Example
 
-This is an example FEDn project that trains the Ultralytics YOLOv8n model to classify buffalos, elephants, rhinos and zebras. See a few examples below,
+This is an example with data from Ultralytics where we classify buffalos, elephants, rhinos and zebras using a YOLOv8 model. See a few examples images below,
 
 <img src="figs/buffalo.jpg" width=30% height=30%>
 
