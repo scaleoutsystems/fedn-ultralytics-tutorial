@@ -29,11 +29,11 @@ This initializes the server which later will be used to run the federated learni
 ## Step 2: Cloning the repository
 Next, you need to clone the repository:
 ```bash
-git clone https://github.com/scaleoutsystems/ultralytics-implementation-in-fedn-tutorial
+git clone https://github.com/scaleoutsystems/fedn-ultralytics-tutorial
 ```
 Then navigate into the repository:
 ```bash
-cd ultralytics-implementation-in-fedn-tutorial
+cd fedn-ultralytics-tutorial
 ```
 This repository contains all the necessary files and configurations for the federated learning setup.
 
@@ -45,11 +45,19 @@ pip3 install -r requirements.txt
 This is recommended to be done in a virtual environment to avoid conflicts with other packages.
 
 ## Step 4: Setting up the dataset
-Ultralytics stores all datasets in a specific directory. You can set the location of this directory by configuring the datasets_dir option with yolo settings. To do this, run the following command:
+Start setting up the dataset by creating a directory named 'datasets' inside the repository:
+```bash
+mkdir datasets
+```
+Then copy the path to the 'datasets' folder by running the following command:
+```bash
+echo "$(pwd)/datasets" | pbcopy
+```
+Ultralytics uses a specific directory to store datasets, which you can configure using the datasets_dir option in YOLO settings. To set this up to the 'datasets' directory you previously created, run the following command, replacing <path_to_dataset> with the path you just copied:
 ```bash
 yolo settings datasets_dir=<path_to_dataset>
 ```
-Replace <path_to_dataset> with the path to your datasets folder, which in this tutorial is named 'datasets'. Then your data needs to be placed within a folder called 'fed_dataset'. The structure should be as follows:
+After setting the dataset directory, you’ll need to organize your data into a folder named 'fed_dataset' inside the datasets directory. Your final folder structure should look like this:
 ```bash
 datasets/
   fed_dataset/
@@ -62,7 +70,7 @@ datasets/
         image1.txt
         image2.txt
         ...
-    val/
+    valid/
       images/
         image1.jpg
         image2.jpg
@@ -84,20 +92,12 @@ Each line corresponds to one bounding box in the image.
 
 For further details on how to prepare your dataset, you can visit <https://docs.ultralytics.com/datasets/>.
 
-For getting started quickly with a sample dataset, you can navigate into the `examples` repository to download and partition a sample dataset.
+For getting started quickly, you can navigate into the `examples` repository to download and partition a sample dataset.
 
 ## Step 5: Setting up configurations
 
-### Number of classes
-To set up your Ultralytics model, you need to adjust the configuration files. Specifically, the number of classes (nc) must be set in both the `data.yaml` and the `yolov8_.yaml` files. Make sure to update these files with the appropriate number of classes for your specific dataset.
-
-### Size of the model
-You also need to select which YOLOv8 model to use by renaming the `yolov8_.yaml` file according to the desired model variant:
-- For YOLOv8n (nano), rename the file to `yolov8n.yaml`
-- For YOLOv8s (small), rename the file to `yolov8s.yaml`
-- For YOLOv8m (medium), rename the file to `yolov8m.yaml`
-- For YOLOv8l (large), rename the file to `yolov8l.yaml`
-- For YOLOv8x (extra large), rename the file to `yolov8x.yaml`
+### Global configurations
+To set up your YOLOv8 model, you need to configure the global_config.yaml inside the 'client' folder. Here you choose the number of classes for the YOLOv8 model by setting the `num_classes` parameter, and respective class names. You also choose which YOLOv8 model to use by setting the `model_size` parameter. 
 
 ### Local client configurations
 Each client can set different training configurations in the `client_config.yaml` file. This file contains the configurations for the client environments, such as the number of local epochs, and batch size. You can adjust these configurations to suit each client's hardware and training requirements.
@@ -105,10 +105,11 @@ Each client can set different training configurations in the `client_config.yaml
 ##  Step 6: Building the compute package
 Once you’ve completed all the configurations, you can build the compute package by running the following command:
 ```bash
+python3 client/setup.py
 fedn package create -p client
 ```
-The compute package contains all the necessary files and configurations for the client environments.
-If you make any changes to the configurations later, you’ll need to rebuild and reupload the compute package to apply the updates.
+This creates he compute package `package.tgz` which contains all the necessary files and configurations for the client environments.
+If you make any changes to the global_config.yaml, you’ll need to rebuild (Step 6) and reupload (Step 8) the compute package to apply the updates. For changes in the `client_config.yaml`, you don't need to rebuild the compute package.
 
 ## Step 7: Initializing the seed model
 To initialize the seed model, run the following command:

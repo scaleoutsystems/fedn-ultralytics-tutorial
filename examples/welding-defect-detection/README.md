@@ -1,6 +1,3 @@
-
-   **Note: If you are new to FEDn, we recommend that you start with the MNIST-Pytorch example instead: https://github.com/scaleoutsystems/fedn/examples/mnist-pytorch**
-
 # Welding Defect Object Detection Example
 
 This is an example FEDn project that trains a YOLOv8n model on images of welds to classify them as "good", "bad", or "defected". The dataset is pre-labeled and can be accessed for free from Kaggle https://www.kaggle.com/datasets/sukmaadhiwijaya/welding-defect-object-detection. See a few examples below,
@@ -15,105 +12,39 @@ This is an example FEDn project that trains a YOLOv8n model on images of welds t
 This example is generalizable to many manufacturing and operations use cases, such as automatic optical inspection. The federated setup enables the organization to make use of available data in different factories and in different parts of the manufacturing process, without having to centralize the data.
 
 
-## How to run the example
+## Step 1: Downloading the data
 
-To run the example, follow the steps below. For a more detailed explanation, follow the Quickstart Tutorial: https://fedn.readthedocs.io/en/stable/quickstart.html
-
-**Note: To be able to run this example, you need to have GPU access.**
-
-
-### 1. Prerequisites
-
--  `Python >=3.8, <=3.12 <https://www.python.org/downloads>`__
--  `A project in FEDn Studio  <https://fedn.scaleoutsystems.com/signup>`__  
--  `A Kaggle account  <https://www.kaggle.com/account/login?phase=startSignInTab&returnUrl=%2Fsignup>`__  
--  GPU access
+Download the dataset from the following link and extract it to the `datasets` directory:
+https://www.kaggle.com/datasets/sukmaadhiwijaya/welding-defect-object-detection
 
 
-### 2. Install FEDn and clone GitHub repo
+## Step 2: Partitioning the data
 
-Install fedn: 
+To partition the data for each client, run the following command:
 
-``` 
-pip install fedn
+```bash
+python3 partition_data.py welding-defect-detection <num_splits>
+```
+Replace `<num_splits>` with the number of clients you want to partition the data for.
+
+This generates the dataset partitions in the 'datasets' directory. These partitions needs to be distributed to the respective clients and renamed to 'fed_dataset' instead of 'welding_defect_detection_split_X.
+
+## Step 3: Setting up the global_config.yaml
+
+Inside the 'client' folder configure the 'global_config.yaml' in the following way:
+
+```bash
+# Configuration for YOLOv8 Model and Dataset Paths
+# Adjust settings here to define model size, class details, and dataset paths
+
+model_size: nano  # Options: nano, small, medium, large, extra-large
+num_classes: 3    # Number of classes
+class_names: ['Bad Weld', 'Good Weld', 'Defect']  # A list of class names
+
+train: fed_dataset/train/images  # Configure paths (usually not needed to be configured)
+val: fed_dataset/valid/images
+test: fed_dataset/test/images
 ```
 
-Clone this repository, then locate into this directory:
-
-```
-git clone https://github.com/scaleoutsystems/fedn-ultralytics-tutorial.git
-cd fedn-ultralytics-tutorial/examples/welding-defect-detection
-```
-
-
-### 3. Creating the compute package and seed model
-
-Create the compute package:
-
-```
-fedn package create --path client
-```
-
-This creates a file 'package.tgz' in the project folder.
-
-Next, generate the seed model:
-
-```
-fedn run build --path client
-```
-
-This will create a model file 'seed.npz' in the root of the project. This step will take a few minutes, depending on hardware and internet connection (builds a virtualenv).  
-
-### 4. Running the project on FEDn
-
-To learn how to set up your FEDn Studio project and connect clients, take the quickstart tutorial: https://fedn.readthedocs.io/en/stable/quickstart.html. When activating the first client, you will be asked to provide your login credentials to Kaggle to download the welding defect dataset and split it into separate client folders.   
-
-
-## Experiments with results
-
-Below are a few examples of experiments which have been run using this example. A centralized setup has been used as baseline to compare against. Two clients have been used in the federated setup and a few different epoch-to-round ratios have been tested.
-
-
-### Experimental setup
-
-Aggregator: 
-- FedAvg
-
-Hyperparameters:
-- batch size: 16
-- learning rate: 0.01
-- imgsz: 640
-
-Approach: The number of epochs and rounds in each experiment are divided such that rounds * epochs = 250. 
-
-#### Centralized setup
-
-| Experiment ID| # clients	|  epochs	| rounds |
-| -----------  | ---------- |  -------- | ------ |
-| 0            | 1	        | 	250	    | 1      |
-
-#### Federated setup
-
-| Experiment ID| # clients	|  epochs	| rounds |
-| -----------  | ---------- |  -------- | ------ |
-| 1            | 2	        | 	5	    | 50     |
-| 2            | 2          |   10      | 25     |
-| 3            | 2	        | 	25	    | 10     |
-
-
-
-### Results
-
-Centralized:
-
-<img src="figs/CentralizedmAP50.png" width=50% height=50%>
-
-
-Federated:
-
-<img src="figs/2clients_5epochs_50rounds.png" width=50% height=50%>
-
-<img src="figs/2clients_10epochs_25rounds.png" width=50% height=50%>
-
-<img src="figs/2clients_25epochs_10rounds.png" width=50% height=50%>
-
+## Step 4: Return to the root guide and follow the instructions from there
+Now your dataset is ready and you have configured the global settings for the YOLOv8 model. Return to the root guide and follow the instructions from there to continue with the federated learning process.
