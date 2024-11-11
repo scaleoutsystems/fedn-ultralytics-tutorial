@@ -148,5 +148,5 @@ In this tutorial, you have learned how to implement Ultralytics YOLOv8 models in
 # Note
 Steps 1, 2, 5, 6, 7 and 8 only need to be done once to set up the federated learning environment in FEDn.
 
-To connect a new client, the only steps that needs to be followed are step 3, 4 and 9.
-Each client can have different configurations in the client_config.yaml file. This file needs to be downloaded from the repository separately for each client.
+To connect a new client, the only steps that needs to be followed are step 2, 3, 4 and 9.
+Each client can have different configurations in the client_config.yaml file to account for different hardware and training requirements.

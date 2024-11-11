@@ -1,2 +1,3 @@
 fedn==0.16.0
 ultralytics==8.2.91
+torch==2.4.1
