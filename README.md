@@ -129,7 +129,7 @@ Before starting the training process, you need to connect the clients to the ser
 To connect a client to the server, you need to hand each client a client.yaml file. This file contains the necessary configurations for the client to connect to the server and gain access to the compute package. Connect clients by pressing the "Clients" button on the left hand side. Here you can download a client.yaml file for each client.
 Place the client.yaml file in the repository and start the client by running following command:
 ```bash
-fedn client start -in client.yaml --secure=True --force-ssl
+fedn client start -in client.yaml
 ```
 This starts the client and connects it to the server. Repeat this process for each client you want to connect to the server.
 
