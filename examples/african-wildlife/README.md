@@ -1,15 +1,6 @@
 # African Wildlife Example
 
-This is an example with data from Ultralytics where we classify buffalos, elephants, rhinos and zebras using a YOLOv8 model. See a few examples images below,
-
-<img src="figs/buffalo.jpg" width=30% height=30%>
-
-<img src="figs/elephant.jpg" width=30% height=30%>
-
-<img src="figs/rhino.jpg" width=30% height=30%>
-
-<img src="figs/zebra.jpg" width=30% height=30%>
-
+This is an example with data from Ultralytics where we classify buffalos, elephants, rhinos and zebras using a YOLOv8 model.
 
 ## Step 1: Downloading the data
 
